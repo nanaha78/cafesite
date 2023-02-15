@@ -1,0 +1,39 @@
+<h1>cafe</h1>
+<h3>cafe一覧</h3>
+<%= link_to "新規投稿へ", new_dog_path %>
+<% if user_signed_in? %>
+  <%= link_to "マイページへ", user_path(current_user.id) %>
+<% end %>
+<h3>タグリスト</h3>
+<% @tag_list.each do |list| %>
+  #<%= link_to list.tag_name, tag_dogs_path(tag_id: list.id) %>
+  <%= "(#{list.dogs.count})" %>
+<% end %>
+
+<div class="tweets-container">
+  <% @dogs.each do |t| %>
+    <div class="cafe">
+    <%= t.user.email %> 
+      <%= t.cafe_name%>
+      <%= t.adress%>
+      <%= t.price%>
+      <%= t.recommend%>
+      <%= image_tag t.image_url, size: "250x200" if t.image? %>
+      <% if user_signed_in? %>
+      <% if current_user.already_liked?(t) %>
+          <%= link_to dog_like_path(id: t.id, dog_id: t.id), method: :delete do %>
+              <p>いいねを取り消す</p><%= t.likes.count %>
+          <% end %>
+      <% else %>
+          <%= link_to dog_likes_path(id: t.id, dog_id: t.id), method: :post do %>
+              <p>いいね</p><%= t.likes.count %>
+          <% end %>
+      <% end %>
+  <% else %>
+      <p>いいねの数 = </p><%= t.likes.count %>
+  <% end %>
+      <%= link_to "詳細へ", dog_path(t.id) %>
+      <%= link_to "編集する", edit_dog_path(t.id) %>
+      <%= button_to "削除する", dog_path(t.id), method: :delete %>
+  <% end %>
+</div>

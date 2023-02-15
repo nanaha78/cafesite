@@ -1,0 +1,15 @@
+<h1>cafe</h1>
+<h3>cafe一覧</h3>
+<%= link_to "新規投稿へ", new_cafe_path %>
+<div class="tweets-container">
+  <% @cafes.each do |t| %>
+    <div class="cafe">
+    <%= image_tag t.image_url, size: "250x200" if t.image? %>
+      <%= t.cafe_name%>
+      <%= t.address%>
+      <%= t.price%>
+      <%= t.recommend%>
+      <%= t.image%>
+    </div>
+  <% end %>
+</div>

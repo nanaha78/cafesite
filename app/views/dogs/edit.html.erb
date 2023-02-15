@@ -1,0 +1,29 @@
+<%= form_for @dog do |f| %>
+   <div class="field">
+    <%= f.label :店名 %>
+    <%= f.text_field :cafe_name, :size => 30 %> 
+   </div>
+
+   <div class="field"> 
+    <%= f.label :住所 %>
+    <%= f.text_field :adress, :size => 30 %> 
+   </div>  
+   
+   <div class="field"> 
+    <%= f.label :価格 %>
+    <%= f.text_field :price, :size => 30 %> 
+   </div>
+
+   <div class="field"> 
+    <%= f.label :商品名 %>
+    <%= f.text_field :recommend, :size => 30 %> 
+   </div>
+
+   <div class="field">
+     <%= f.label"タグ (スペースで区切ると複数タグ登録できます)" %>
+     <%= f.text_field :tag_name, value: @tag_list,class:"form-control"%>
+   </div>
+   
+   <%= f.submit "編集する" %>
+
+  <% end %>

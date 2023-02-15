@@ -1,0 +1,39 @@
+<h1>cafe</h1>
+<h3>新規投稿ページ</h3>
+<%= form_for @cafe do |f| %>
+
+# データ型がstringで自由記述の入力フォーム
+  <div class="field">
+    <%= f.label :店名 %>
+    <%= f.text_field :cafe_name, :size => 30 %>
+  </div>
+
+  # データ型がstringで自由記述の入力フォーム
+  <div class="field">
+    <%= f.label :住所 %>
+    <%= f.text_field :address, :size => 30 %>
+  </div>
+
+  # データ型がstringで自由記述の入力フォーム
+  <div class="field">
+    <%= f.label :価格 %>
+    <%= f.text_field :price, :size => 30 %>
+  </div>
+
+  # データ型がstringで自由記述の入力フォーム
+  <div class="field">
+    <%= f.label : 商品名%>
+    <%= f.text_field :recommend, :size => 30 %>
+  </div>
+
+   # データ型がstringで自由記述の入力フォーム
+   <div class="field">
+   <%= f.label :写真%>
+   <%= f.text_field :image%>
+ </div>
+
+
+  <%= f.submit "投稿する" %>
+<% end %>
+
+<%= link_to "一覧に戻る", コントローラー名_path %>
